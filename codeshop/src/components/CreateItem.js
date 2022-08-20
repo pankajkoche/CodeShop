@@ -91,7 +91,7 @@ const uploadImage = (e) => {
           discription: discription,
           content: content,
         };
-        saveItem(data);
+        //saveItem(data);
         setIsLoading(false);
         setFields(true);
         setMsg("Data Uploaded successfully 😊");
@@ -112,7 +112,7 @@ const uploadImage = (e) => {
       }, 4000);
     }
 
-    fetchData();
+   // fetchData();
   };
 
   const clearData = () => {
@@ -122,14 +122,14 @@ const uploadImage = (e) => {
     setContaint("");
   };
 
-  const fetchData = async () => {
-    await getAllFoodItems().then((data) => {
+  /*const fetchData = async () => {
+    //await getAllFoodItems().then((data) => {
       dispatch({
         type: actionType.SET_FOOD_ITEMS,
         foodItems: data,
       });
     });
-  };
+  };*/
     return (
         <div className='w-full h-auto flex min-h-screen items-center justify-center'>
             <div className='w-[90%] md:[75%] border border-gray-300 p-4

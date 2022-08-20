@@ -34,7 +34,7 @@ const Header = () => {
         if (!user) {
           const { user } = await signInWithPopup(firebaseAuth, provider);
           const { refreshToken, providerData } = user;
-          localStorage.setItem("user", JSON.stringify(providerData[0]));
+          //localStorage.setItem("user", JSON.stringify(providerData[0]));
           dispatch({
             type: actionType.SET_USER,
             user: providerData[0],
@@ -61,7 +61,7 @@ const Header = () => {
       };
 
     return (
-        <header className='fixed z-50 w-screen  p-6 px-16  bg-gray-100' >
+        <header className='fixed z-50 w-screen    md:p-4 px-8   bg-gray-100' >
             {/*Desktop & Tablet*/}
             <div className='hidden md:flex w-full h-full items-center justify-between'>
                 <Link to={'/'} className='flex item-center gap-2'>
@@ -75,19 +75,24 @@ const Header = () => {
                     exit={{opacity:0,x:200}} 
 
                     className='flex item-center gap-8 ml-auto'>
+                    <Link to={"/"}>
                     <li className='text-base text-textColor hover:text-headingColor  duration-100 transition-all ease-in-out cursor-pointer'>
                         Home
                     </li>
-                    
+                    </Link>
+                    <Link to={"/internship"}>
                     <li  className='text-base text-textColor hover:text-headingColor  duration-100 transition-all ease-in-out cursor-pointer'>
                         Internship
                     </li>
+                    </Link>
                     <li  className='text-base text-textColor hover:text-headingColor  duration-100 transition-all ease-in-out cursor-pointer'>
                         Tutorial
                     </li>
+                    <Link to={"/paidcourse"}>
                     <li  className='text-base text-textColor hover:text-headingColor  duration-100 transition-all ease-in-out cursor-pointer'>
                         Courses
                     </li>
+                    </Link>
                     <li  className='text-base text-textColor hover:text-headingColor  duration-100 transition-all ease-in-out cursor-pointer'>
                         Practice
                     </li>    
@@ -215,8 +220,9 @@ const Header = () => {
                 >
                   Tutorial
                 </NavLink>
+                
                 <NavLink
-                  to={"/"}
+                  to={"/paidcourse"}
                   className={({ isActive }) =>
                     isActive ? isActiveStyles : isNotActiveStyles
                   }

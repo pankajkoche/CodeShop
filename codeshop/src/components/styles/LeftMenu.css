@@ -1,0 +1,19 @@
+.sidebar{
+    width: 20%;
+    float: left;
+    max-height: 500px;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    position:fixed
+}
+.sidebar::-webkit-scrollbar {
+    width: 5px;
+  }
+  .sidebar::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  .sidebar::-webkit-scrollbar-thumb {
+    background: rgb(62, 166, 226); 
+  }

@@ -1,0 +1,234 @@
+[
+    {
+        "topics":[
+            {
+                "id":"introduction-to-python",
+                "title":"Introduction to python"
+            },
+            {
+                
+                "id":"variable",
+                "title":"variable"
+            },
+            {
+                "id":"data-Types",
+                "title":"Data types"
+            },
+            {
+                "id":"if-else",
+                "title":"if-else"
+            },
+            {
+                "id":"foloop",
+                "title":"for loop"
+            },
+            {
+                "id":"while-loop",
+                "title":"while loop"
+            },
+            {
+                "id":"String",
+                "title":"Strings and String Operations"
+            },
+            {
+                "id":"Lists",
+                "title":"Lists"
+            },
+            {
+                "id":"File-Operations",
+                "title":"Input/Output and File Operations"
+            },
+            {
+                "id":"Exception-Handling",
+                "title":"Exception Handling"
+            },
+            {
+                "id":"OOP",
+                "title":"Object-Oriented Programming"
+            },
+            {
+                "id":"Regular-Expressionss",
+                "title":"Regular-Expressionss"
+            },
+            {
+                "id":"NumPy",
+                "title":"NumPy"
+            },
+            {
+                "id":"Pandas",
+                "title":"Pandas"
+            },
+            {
+                "id":"Data-Science",
+                "title":"Introduction to Data Science"
+            },
+            {
+                "id":"Web-Scraping",
+                "title":"Web Scraping"
+            },
+            {
+                "id":"Django-flask",
+                "title":"Web Development"
+            },
+
+            {
+                "id":"OOP",
+                "title":"Object-Oriented Programming"
+            },
+            {
+                "id":"Regular-Expressionss",
+                "title":"Regular-Expressionss"
+            },
+            {
+                "id":"NumPy",
+                "title":"NumPy"
+            },
+            {
+                "id":"Pandas",
+                "title":"Pandas"
+            },
+            {
+                "id":"Data-Science",
+                "title":"Introduction to Data Science"
+            },
+            {
+                "id":"Web-Scraping",
+                "title":"Web Scraping"
+            },
+            {
+                "id":"Django-flask",
+                "title":"Web Development"
+            }
+
+    ],
+        "content":[
+            {
+                
+                "introduction-to-python":[{
+                    
+                    "para":"Python is a high-level, interpreted programming language that was first released in 1991 by Guido van Rossum. It was named after the Monty Python comedy group and is known for its simple, easy-to-read syntax and code structure. Python is widely used for web development, scientific computing, data analysis, artificial intelligence, and more."
+                },
+                {
+                    "img":"https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
+                    "para":"Over the years, Python has grown in popularity and is now one of the most widely used programming languages in the world. It has a large, active user community that contributes to its development and provides support to new users. The language is constantly evolving and new features and modules are added with each new release."
+                },
+                {
+                    "para":"Some of the key features of Python include:"
+                },
+                {
+                    "para":"1. Dynamic Typing: In Python, you don't have to declare the type of a variable before using it, which makes the code more flexible and easier to write.:"
+                },
+                {
+                    "para":"2. Readability: Python code is designed to be easily readable, making it a great choice for beginners and experienced programmers alike."
+                },
+                {
+                    "para": "Large Standard Library: Python has a large standard library that includes modules for many common programming tasks, such as connecting to the web, reading and writing files, and more."
+                },{
+                    
+                    "para":"Cross-Platform Support: Python can run on multiple platforms, including Windows, macOS, and Linux, making it a great choice for cross-platform development."
+                }
+                ],
+
+                "data-Types":["int" ," float" ,"list", "dic"],
+                "variable":[
+                    {
+                        "img":"https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
+                        "para":"paragraph  hgsfcrtxsvb cdfstg fhtftgfcds fgrfsdx hgfrfdd vtftdd ftrd frtd fytydf ytfd hftfxs ghfgs gfgdc fhfgvgvc"
+                    },
+                    {
+                        "img":"https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
+                        "para":"paragraph  hgsfcrtxsvb cdfstg fhtftgfcds fgrfsdx hgfrfdd vtftdd ftrd frtd fytydf ytfd hftfxs ghfgs gfgdc fhfgvgvc"
+                    }
+                ],
+                "if-else":[],
+                "foloop":[],
+                "while-loop":[],
+                "String":[],
+                "Lists":[],
+                "File-Operations":[],
+                "Exception-Handling":[],
+                "OOP":[],
+                "NumPy":[],
+                "Pandas":[],
+                "Data-Science":[],
+                "Web-Scraping":[],
+                "Django-flask":[]
+
+
+            }
+    ]
+    },
+    
+    {
+        "topics":[
+            {
+                "id":"recursion",
+                "title":"Recursion"
+            },
+            {
+                
+                "id":"variable",
+                "title":"variable"
+            }
+            
+
+    ],
+        "content":[
+            {
+                
+                "recursion":[{
+                    
+                    "para":"Python is a high-level, interpreted programming language that was first released in 1991 by Guido van Rossum. It was named after the Monty Python comedy group and is known for its simple, easy-to-read syntax and code structure. Python is widely used for web development, scientific computing, data analysis, artificial intelligence, and more."
+                },
+                {
+                    "img":"https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
+                    "para":"Over the years, Python has grown in popularity and is now one of the most widely used programming languages in the world. It has a large, active user community that contributes to its development and provides support to new users. The language is constantly evolving and new features and modules are added with each new release."
+                },
+                {
+                    "para":"Some of the key features of Python include:"
+                },
+                {
+                    "para":"1. Dynamic Typing: In Python, you don't have to declare the type of a variable before using it, which makes the code more flexible and easier to write.:"
+                },
+                {
+                    "para":"2. Readability: Python code is designed to be easily readable, making it a great choice for beginners and experienced programmers alike."
+                },
+                {
+                    "para": "Large Standard Library: Python has a large standard library that includes modules for many common programming tasks, such as connecting to the web, reading and writing files, and more."
+                },{
+                    
+                    "para":"Cross-Platform Support: Python can run on multiple platforms, including Windows, macOS, and Linux, making it a great choice for cross-platform development."
+                }
+                ],
+
+                "data-Types":["int" ," float" ,"list", "dic"],
+                "variable":[
+                    {
+                        "img":"https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
+                        "para":"paragraph  hgsfcrtxsvb cdfstg fhtftgfcds fgrfsdx hgfrfdd vtftdd ftrd frtd fytydf ytfd hftfxs ghfgs gfgdc fhfgvgvc"
+                    },
+                    {
+                        "img":"https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
+                        "para":"paragraph  hgsfcrtxsvb cdfstg fhtftgfcds fgrfsdx hgfrfdd vtftdd ftrd frtd fytydf ytfd hftfxs ghfgs gfgdc fhfgvgvc"
+                    }
+                ],
+                "if-else":[],
+                "foloop":[],
+                "while-loop":[],
+                "String":[],
+                "Lists":[],
+                "File-Operations":[],
+                "Exception-Handling":[],
+                "OOP":[],
+                "NumPy":[],
+                "Pandas":[],
+                "Data-Science":[],
+                "Web-Scraping":[],
+                "Django-flask":[]
+
+
+            }
+    ]
+    }
+
+]

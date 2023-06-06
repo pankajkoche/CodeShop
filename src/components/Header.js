@@ -22,7 +22,7 @@ const Header = () => {
         <Link to={'/'} className='flex item-center gap-2 px-3'>
                 
             <p className='text-headingColor text-xl font-bold '>CodeShop</p>
-            </Link>
+        </Link>
             </div>
         </div>
         <div  className='ml-auto mr-2'>
@@ -31,7 +31,7 @@ const Header = () => {
                 animate={{opacity:1, x:0}}
                 exit={{opacity:0,x:200}}  className='hidden md:flex  text-sm items-center gap-6 '>
           <li><Link to="/" smooth={true} duration={500}>Home</Link></li>
-          <li><Link to="/products" smooth={true} offset={-50} duration={500}>Product</Link></li>
+          <li><Link to="/intenship" smooth={true} offset={-50} duration={500}>Intenship</Link></li>
           <li><Link to="/about" smooth={true} offset={-100} duration={500}>About Us</Link></li>
           <li><Link to="/contact" smooth={true} offset={-50} duration={500}>Contact</Link></li>
           </motion.ul >

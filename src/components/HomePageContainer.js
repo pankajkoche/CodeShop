@@ -59,7 +59,7 @@ const HomePageContainer = () => {
          py-2 gap-2 flex-wrap">
           
           {homeCourseData && homeCourseData.map((n) => (
-            <Link to={n.link.toString()+"/Recursion"}>
+            <Link to={"c/"+n.link.toString()+"/introduction-to-python"}>
               <div
                 key={n.id}
                 className="  lg:w-190 min-w-[190Px] p-4 bg-cardOverlay backdrop-blur-md rounded-3xl flex flex-col

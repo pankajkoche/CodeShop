@@ -1,20 +1,24 @@
 [
     {
         "topics":[
+            
             {
+                "subject":"python",
                 "id":"introduction-to-python",
                 "title":"Introduction to python"
             },
             {
-                
+                "subject":"python",
                 "id":"variable",
                 "title":"variable"
             },
             {
+                "subject":"python",
                 "id":"data-Types",
                 "title":"Data types"
             },
             {
+                "subject":"python",
                 "id":"if-else",
                 "title":"if-else"
             },
@@ -229,6 +233,89 @@
 
             }
     ]
-    }
+    },
 
+    {
+        "topics":[
+            {
+                "id":"add-two-Numbers",
+                "title":"Add Two Numbers",
+                "subject":"problems"
+            },
+            {
+                
+                "id":"add-two-Numbers",
+                "title":"Add Two Numbers",
+                "subject":"problems"
+            }
+            ,
+            {
+                "id":"add-two-Numbers",
+                "title":"Add Two Numbers",
+                "subject":"problems"
+            }
+
+    ],
+        "content":[
+            {
+                
+                "add-two-Numbers":[
+
+                    { "type": "paragraph", "content": "You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list." },
+                    { "type": "code", "content": "class Solution:\n    def twoSum(self, nums: List[int], target: int) -> List[int]:\n        ans=[]\n        temp={}\n        for i in range(len(nums)):\n            cal=target-nums[i] \n            if nums[i] not in temp:\n                temp[cal]=i\n            else:\n                ans.append(i)\n                a=temp[nums[i]]\n                ans.append(a)\n\n        return ans" },
+                    
+                    {
+                    
+                    "para":"<p className='text-bold'>. </p>"
+                },
+                {
+                    "img":"https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
+                    "para":"Over the years, Python has grown in popularity and is now one of the most widely used programming languages in the world. It has a large, active user community that contributes to its development and provides support to new users. The language is constantly evolving and new features and modules are added with each new release."
+                },
+                {
+                    "para":"Some of the key features of Python include:"
+                },
+                {
+                    "para":"1. Dynamic Typing: In Python, you don't have to declare the type of a variable before using it, which makes the code more flexible and easier to write.:"
+                },
+                {
+                    "para":"2. Readability: Python code is designed to be easily readable, making it a great choice for beginners and experienced programmers alike."
+                },
+                {
+                    "para": "Large Standard Library: Python has a large standard library that includes modules for many common programming tasks, such as connecting to the web, reading and writing files, and more."
+                },{
+                    
+                    "para":"Cross-Platform Support: Python can run on multiple platforms, including Windows, macOS, and Linux, making it a great choice for cross-platform development."
+                }
+                ],
+
+                "data-Types":["int" ," float" ,"list", "dic"],
+                "variable":[
+                    {
+                        "img":"https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
+                        "para":"paragraph  hgsfcrtxsvb cdfstg fhtftgfcds fgrfsdx hgfrfdd vtftdd ftrd frtd fytydf ytfd hftfxs ghfgs gfgdc fhfgvgvc"
+                    },
+                    {
+                        "img":"https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
+                        "para":"paragraph  hgsfcrtxsvb cdfstg fhtftgfcds fgrfsdx hgfrfdd vtftdd ftrd frtd fytydf ytfd hftfxs ghfgs gfgdc fhfgvgvc"
+                    }
+                ],
+                "if-else":[],
+                "foloop":[],
+                "while-loop":[],
+                "String":[],
+                "Lists":[],
+                "File-Operations":[],
+                "Exception-Handling":[],
+                "OOP":[],
+                "NumPy":[],
+                "Pandas":[],
+                "Data-Science":[],
+                "Web-Scraping":[],
+                "Django-flask":[]
+
+
+            }
+    ]
+    }
 ]

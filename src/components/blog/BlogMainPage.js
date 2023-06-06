@@ -6,16 +6,24 @@ import Article from './Article';
 import Sidebar from './Sidebar';
 import { useLocation } from 'react-router-dom';
 import data from '../../utils/data.json'
+import { topicIndex,getIndex } from '../../utils/data'; 
 
 const BlogMainPage = () => {
 
+  
   const location = useLocation();
-  const tile =location.pathname.split("/")[2]; 
+  
+  const tile =location.pathname.split("/")[3]; 
   console.log("data",data[1].topics)
   console.log("content",data[1].content)
 
-  const topics = data[1].topics
-  var x = data[1].content
+  const subject = location.pathname.split("/")[2]
+  const index=getIndex(subject)
+  
+
+
+  const topics = data[index].topics
+  var x = data[index].content
   
  
   var blog=x[0][tile]
@@ -29,7 +37,7 @@ const BlogMainPage = () => {
     
       <div className="container">
             <div className="left-column col-20 ">
-              <Sidebar topics={topics}/>
+              <Sidebar topics={topics} subject={subject}/>
             </div>
             <div className="middle-column col-60"> 
               <Article blog={blog}/>

@@ -1,80 +1,60 @@
 import React, { useState } from 'react';
+import marked from 'marked';
 
-function BlogForm() {
-  const [title, setTitle] = useState('');
-  const [paragraphs, setParagraphs] = useState(['']);
-  const [code, setCode] = useState('');
-  const [images, setImages] = useState([]);
+const BlogForm = () => {
+  const [markdown, setMarkdown] = useState('');
+  const [html, setHtml] = useState('');
 
-  const handleAddParagraph = () => {
-    setParagraphs([...paragraphs, '']);
+  const handleMarkdownChange = (event) => {
+    const newMarkdown = event.target.value;
+    setMarkdown(newMarkdown);
+    const newHtml = marked(newMarkdown); // Convert Markdown to HTML
+    setHtml(newHtml);
   };
 
-  const handleParagraphChange = (index, value) => {
-    const newParagraphs = [...paragraphs];
-    newParagraphs[index] = value;
-    setParagraphs(newParagraphs);
-  };
-
-  const handleImageChange = event => {
-    const files = Array.from(event.target.files);
-    const images = files.map(file => ({
-      file,
-      preview: URL.createObjectURL(file),
-    }));
-    setImages([...images, ...images]);
-  };
-
-  const handleSubmit = event => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    // Send the form data to your server using an HTTP POST request
-    // Include the form data as the request body in JSON format
-    const formData = { title, paragraphs, code, images };
-    fetch('/api/blog-posts', {
+
+    // Here, you can save the `html` variable to your database
+    // using an API call or any other method you prefer.
+    // Example API call using fetch:
+    
+    fetch('/api/save', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
+      body: JSON.stringify({ html }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
     })
-      .then(response => {
-        if (response.ok) {
-          console.log('Blog post saved successfully');
-        } else {
-          console.error('Failed to save blog post');
-        }
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('Data saved successfully:', data);
+        // Optionally, you can show a success message or redirect the user
       })
-      .catch(error => {
-        console.error('Error saving blog post:', error);
+      .catch((error) => {
+        console.error('Error saving data:', error);
+        // Optionally, you can show an error message
       });
+    
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Title:
-        <input type="text" value={title} onChange={event => setTitle(event.target.value)} />
-      </label>
-      {paragraphs.map((paragraph, index) => (
-        <div key={index}>
-          <label>
-            Paragraph {index + 1}:
-            <textarea value={paragraph} onChange={event => handleParagraphChange(index, event.target.value)} />
-          </label>
-        </div>
-      ))}
-      <button type="button" onClick={handleAddParagraph}>
-        Add paragraph
-      </button>
-      <label>
-        Code:
-        <textarea value={code} onChange={event => setCode(event.target.value)} />
-      </label>
-      <label>
-        Images:
-        <input type="file" accept="image/*" multiple onChange={handleImageChange} />
-      </label>
-      <button type="submit">Save blog post</button>
-    </form>
+    <div>
+      <form onSubmit={handleSubmit}>
+        <textarea
+          value={markdown}
+          onChange={handleMarkdownChange}
+          placeholder="Enter Markdown"
+          rows="10"
+          cols="50"
+        />
+        <br />
+        <button type="submit">Save</button>
+      </form>
+      <hr />
+      <div dangerouslySetInnerHTML={{ __html: html }} />
+    </div>
   );
-}
+};
 
 export default BlogForm;

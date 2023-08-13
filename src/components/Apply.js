@@ -1,251 +1,80 @@
 import React, { useState } from 'react';
-import {motion } from 'framer-motion'
-import {MdCloudUpload,MdDelete} from 'react-icons/md'
-import Loader from './Loader'
-import {deleteObject,
-    getDownloadURL,
-    ref,
-    uploadBytesResumable} from 'firebase/storage'
-import { storage,} from '../firebase.config';
+import axios from 'axios';
+import { FaSpinner } from 'react-icons/fa';
 
+const App = () => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [resume, setResume] = useState(null);
+  const [message, setMessage] = useState('');
+  const [mobileNo,SetMobileNo]=useState('');
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-const Apply = () => {
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
 
-const [title, setTitle]=useState("");
-const [discription, setDiscription]=useState("");
-const [content, setContaint] =useState("");
-const [imageAsset, setImageAsset] = useState(null);
-const [fields, setFields] = useState(false);
-const [alertStatus, setAlertStatus] = useState("danger");
-const [msg, setMsg] = useState(null);
-const [isLoading, setIsLoading] = useState(false);
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('email', email);
+    formData.append('resume', resume);
+    formData.append('mobileNo', mobileNo);
+    setIsSubmitting(true);
 
-const uploadImage = (e) => {
-    setIsLoading(true);
-    const imageFile = e.target.files[0];
-    const storageRef = ref(storage, `Images/${Date.now()}-${imageFile.name}`);
-    const uploadTask = uploadBytesResumable(storageRef, imageFile);
-
-    uploadTask.on(
-      "state_changed",
-      (snapshot) => {
-        const uploadProgress =
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-      },
-      (error) => {
-        console.log(error);
-        setFields(true);
-        setMsg("Error while uploading : Try AGain 🙇");
-        setAlertStatus("danger");
-        setTimeout(() => {
-          setFields(false);
-          setIsLoading(false);
-        }, 4000);
-      },
-      () => {
-        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-          setImageAsset(downloadURL);
-          setIsLoading(false);
-          setFields(true);
-          setMsg("Image uploaded successfully 😊");
-          setAlertStatus("success");
-          setTimeout(() => {
-            setFields(false);
-          }, 4000);
-        });
-      }
-    );
-  };
-
-  const deleteImage = () => {
-    setIsLoading(true);
-    const deleteRef = ref(storage, imageAsset);
-    deleteObject(deleteRef).then(() => {
-      setImageAsset(null);
-      setIsLoading(false);
-      setFields(true);
-      setMsg("Image deleted successfully 😊");
-      setAlertStatus("success");
-      setTimeout(() => {
-        setFields(false);
-      }, 4000);
-    });
-  };
-
-  const saveDetails = () => {
-    setIsLoading(true);
-    try {
-      if (!title || !content || !imageAsset || !discription ) {
-        setFields(true);
-        setMsg("Required fields can't be empty");
-        setAlertStatus("danger");
-        setTimeout(() => {
-          setFields(false);
-          setIsLoading(false);
-        }, 4000);
-      } else {
-        const data = {
-          id: `${Date.now()}`,
-          title: title,
-          imageURL: imageAsset,
-          discription: discription,
-          content: content,
-        };
-        //saveItem(data);
-        setIsLoading(false);
-        setFields(true);
-        setMsg("Data Uploaded successfully 😊");
-        setAlertStatus("success");
-        setTimeout(() => {
-          setFields(false);
-        }, 4000);
-        clearData();
-      }
-    } catch (error) {
-      console.log(error);
-      setFields(true);
-      setMsg("Error while uploading : Try AGain 🙇");
-      setAlertStatus("danger");
-      setTimeout(() => {
-        setFields(false);
-        setIsLoading(false);
-      }, 4000);
-    }
-
-   // fetchData();
-  };
-
-  const clearData = () => {
-    setTitle("");
-    setImageAsset(null);
-    setDiscription("");
-    setContaint("");
-  };
-
-  /*const fetchData = async () => {
-    //await getAllFoodItems().then((data) => {
-      dispatch({
-        type: actionType.SET_FOOD_ITEMS,
-        foodItems: data,
+    axios.post('http://127.0.0.1:5000/submit_form', formData)
+      .then(response => {
+        setMessage(response.data.message);
+        setIsSubmitted(true);
+       
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        setMessage('An error occurred while submitting the form. Please try again later.');
       });
-    });
-  };*/
-    return (
-        <div className='w-full h-auto flex min-h-screen items-center justify-center'>
-            <div className='w-[90%] md:[75%] border border-gray-300 p-4
-                rounded-lg flex flex-col items-center justify-center gap-4 bg-slate-50'>
+  };
 
-                    {
-                        fields && (
-
-                            <motion.p initial={{opacity:0}}
-                                animate={{opacity:1}}
-                                exit={{opacity:0}}
-
-                                className={`w-full p-2 rounded-md text-lg font-semibold text-center 
-                                ${alertStatus==='danger'? "bg-red-400 text-red-800":"bg-emerald-400 text-emarald-8 " }`}>
-                                {msg}
-                            </motion.p>
-                        )
-                    }
-
-                    <div className='w-full py-2 border-b border-gray-400 flex
-                    items-center gap-4'>
-
-                        <input required
-                         value={title}
-                         onChange={(e)=>setTitle(e.target.value)}
-                         placeholder="Add Title"
-                        className='w-full h-full text-lg bg-transparent 
-                        font-semibold outline-none border-none text-textColor'/>
-                    </div>
-                   
-                    <div className="group flex justify-center py-2 gap-4  items-center 
-                        flex-col border-2 border-dotted border-gray-300 w-full h-225 md:h-340 
-                        cursor-pointer rounded-lg">
-                        {isLoading ? <Loader /> :<>
-                        
-                           {!imageAsset? <>
-                            <label className='w-full h-full flex flex-col items-center justify-center
-                            cursor-pointer '>
-                                <div className='w-full h-full flex flex-col items-center justify-center'>
-                                    <MdCloudUpload className="text-gray-5000 text-3xl hover:text-gray-700"/>
-
-                                    <p className="text-gray-500 hover:text-gray-700">
-                                        Click here to upload
-                                    </p>
-                                </div>
-                                <input
-                                type="file"
-                                name="uploadimage"
-                                accept="image/"
-                                onChange={uploadImage}
-                                className="w-0 h-0"
-                                />
-                            </label>
-                            </>:(<>
-                                <div className="relative h-full">
-                            <img
-                            src={imageAsset}
-                            alt="uploaded image"
-                            className="w-full h-full object-cover"
-                            />
-                            <button
-                            type="button"
-                            className="absolute bottom-3 right-3 p-3 rounded-full bg-red-500 text-xl cursor-pointer outline-none hover:shadow-md  duration-500 transition-all ease-in-out"
-                            onClick={deleteImage}
-                            >
-                            <MdDelete className="text-white" />
-                            </button>
-                        </div>
-                                    </>)
-                                    }
-                        </>}
-                                            
-
-                    </div>
-
-                    <div className='w-full py-2 border-b border-gray-400 flex
-                    items-center gap-2'>
-
-                        <input required
-                         value={discription}
-                         onChange={(e)=>setDiscription(e.target.value)}
-                         placeholder="Add discription"
-                        className='w-full h-full text-lg bg-transparent 
-                        font-semibold outline-none border-none text-textColor'/>
-
-                    </div>
-                    <div className='w-full py-2 border-b border-gray-400 flex
-                    items-center gap-2'>
-
-                        <textarea required rows="4" 
-                         value={content}
-                         onChange={(e)=>setContaint(e.target.value)}
-                         placeholder="content"
-                        className='w-full h-full text-lg bg-transparent 
-                        font-semibold outline-none border-none text-textColor'/>
-
-                    </div>
-
-                    <div className="flex items-center w-full py-2">
-                        <button
-                            type="button"
-                            className="ml-0 md:ml-auto w-full md:w-auto 
-                            border-none outline-none bg-red-500 px-12 py-2 
-                            rounded-lg text-lg text-white font-semibold"
-                            onClick={saveDetails}
-                        >
-                            Save
-                        </button>
-                    </div>
-
-
-                </div>
+  return (
+    <div className="">
+      {isSubmitted ? (
+        <div className='bg-white max-w-md mx-auto border rounded-md mt-3'>
+          <div><img  src='https://www.revechat.com/wp-content/uploads/2023/06/Thank-you.jpg' alt='thank you'/></div>
+          <div className='mx-auto p-4'>
+          <h2>Thank You!</h2>
+          <p>Your application has been submitted successfully! We will get back to you soon.</p>
+          </div>
+          
         </div>
-    );
+      ) :(<div className="max-w-md mx-auto p-4 border rounded-md bg-slate-300">
+      <h2 className="text-2xl font-bold mb-4">Apply for Internship</h2>
+      <form onSubmit={handleFormSubmit} encType="multipart/form-data">
+        <label className="block mb-1" htmlFor="name">Name:</label>
+        <input className="w-full px-4 py-2 border mb-1 rounded border-gray-300" type="text" id="name" name="name" required value={name} onChange={(e) => setName(e.target.value)} />
+
+        <label className="block mb-1" htmlFor="email">Email:</label>
+        <input className="w-full px-4 py-2 mb-1 border rounded border-gray-300" type="email" id="email" name="email" required value={email} onChange={(e) => setEmail(e.target.value)} />
+
+        <label className="block mb-1" htmlFor="mobileNo">Mobile Number:</label>
+        <input className="w-full px-4 py-2 mb-1 border rounded border-gray-300" type="tel" id="mobileNo" name="mobileNo" required value={mobileNo} onChange={(e) => SetMobileNo(e.target.value)} />
+
+        <label className="block mb-1" htmlFor="resume">Upload Resume:</label>
+        <input className="w-full px-4 py-2 mb-1 border rounded border-gray-300" type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required onChange={(e) => setResume(e.target.files[0])} />
+
+        <button className="w-full bg-blue-500 text-white py-2 my-2 px-4 rounded hover:bg-blue-600 transition duration-200" type="submit">
+        {isSubmitting ? (
+              <span className="flex items-center">
+                <FaSpinner className="animate-spin mr-2" />
+                Submitting...
+              </span>
+            ) : (
+              'Submit'
+            )}
+          
+          </button>
+      </form>
+    </div>)}
+    </div>
+    
+  );
 };
 
-export default Apply;
-
-
+export default App;

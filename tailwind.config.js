@@ -2,7 +2,15 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
+    listStyleType: {
+      none: 'none',
+      disc: 'disc',
+      decimal: 'decimal',
+      square: 'square',
+      roman: 'upper-roman',
+    },
     extend: {
+      
       margin: {
         320: "320px",
       },
@@ -55,6 +63,10 @@ module.exports = {
         cartTotal: "#343739",
         cardOverlay:"rgba(256,256,256,0.4)"
       },
+      fontFamily: {
+        bodyFont: ["DM Sans", "sans-serif"],
+        titleFont: ["Poppins", "sans-serif"],
+      },
       screens: {
         sm: "640px",
         md: "768px",
@@ -64,7 +76,7 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    require('tailwind-scrollbar-hide')
-  ],
+  
+    plugins: [require("tailwind-scrollbar")],
+  
 };

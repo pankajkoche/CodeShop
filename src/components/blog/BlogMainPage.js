@@ -1,52 +1,30 @@
 
 import React, { useState } from 'react';
-import '../../components/styles/BlogMainPage.css'
 import Ads from './Ads';
 import Article from './Article';
 import Sidebar from './Sidebar';
 import { useLocation } from 'react-router-dom';
-import data from '../../utils/data.json'
-import { topicIndex,getIndex } from '../../utils/data'; 
+
+
+
 
 const BlogMainPage = () => {
 
   
   const location = useLocation();
-  
-  const tile =location.pathname.split("/")[3]; 
-  console.log("data",data[1].topics)
-  console.log("content",data[1].content)
-
-  const subject = location.pathname.split("/")[2]
-  const index=getIndex(subject)
-  
-
-
-  const topics = data[index].topics
-  var x = data[index].content
-  
- 
-  var blog=x[0][tile]
-
-  console.log("blog",blog)
-  
-  console.log("tile",tile)
-  
+  const path= location.pathname.split("/")[1]
+  const id = location.state?.id;
   
     return (
     
-      <div className="container">
-            <div className="left-column col-20 ">
-              <Sidebar topics={topics} subject={subject}/>
-            </div>
-            <div className="middle-column col-60"> 
-              <Article blog={blog}/>
-            </div>
-            <div className="right-column col-20">
-              <Ads/>
-            </div>
-
+      <div className="flex flex-col md:flex-row">
+           
+          <div className="hidden lg:block w-1/5 "><Sidebar  subject={path}/></div>
+          <div className="flex w-full lg:w-3/5 "><Article bid={id}/></div>
+          <div className="flex lg:block w-1/5 "><Ads/></div>
     </div>
+
+    
     );
 };
 

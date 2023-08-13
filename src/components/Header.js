@@ -15,7 +15,7 @@ const Header = () => {
     const handleClose =()=> setNav(!nav)
 
   return (
-    <div className='w-screen md:h-[56px] h-[60px]  z-20 bg-green-300 fixed drop-shadow-lg'>
+    <div className='w-screen md:h-[56px] h-[60px]  z-50 bg-white fixed drop-shadow-lg'>
       <div className=' flex justify-between items-center w-full h-full'>  
         <div className='flex items-center'>
             <div>

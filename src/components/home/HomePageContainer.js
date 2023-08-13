@@ -1,7 +1,7 @@
 import React from 'react';
-import Preparation from '../images/preparation.png'
-import HomeCart from '../images/homeCart.png'
-import { homeCourseData } from '../utils/data';
+import Preparation from '../../images/preparation.png'
+import HomeCart from '../../images/homeCart.png'
+import { homeCourseData } from '../../utils/data';
 import { Link } from 'react-router-dom';
 import { data } from 'autoprefixer';
 
@@ -59,7 +59,7 @@ const HomePageContainer = () => {
          py-2 gap-2 flex-wrap">
           
           {homeCourseData && homeCourseData.map((n) => (
-            <Link to={"c/"+n.link.toString()+"/introduction-to-python"}>
+            <Link to={n.link.toString()}>
               <div
                 key={n.id}
                 className="  lg:w-190 min-w-[190Px] p-4 bg-cardOverlay backdrop-blur-md rounded-3xl flex flex-col

@@ -18,7 +18,9 @@ const CourseNav = () => {
               <li className="my-2 md:my-0 md:mx-2 ">
                 <Link
                   to="/python"
+                  state={{id:1}}
                   className="block text-white hover:text-gray-900 px-2 py-1 rounded transition duration-300"
+
                 >
                   Python
                 </Link>
